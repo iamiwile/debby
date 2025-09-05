@@ -108,6 +108,24 @@
     West Dundee, IL 60118<br>
     <a href="tel:7088877425">708-887-7425</a>
   </address>
+  <form action="/submit" method="post">
+  <label for="phone">Phone Number:</label><br>
+  <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+  <br><br>
+
+  <!-- Checkbox exclusivo para SMS -->
+  <div>
+    <input type="checkbox" id="sms_consent" name="sms_consent" value="1">
+    <label for="sms_consent">
+      I agree to receive SMS messages from Staja Health. Message and data rates may apply. 
+      You may opt-out at any time by replying "STOP".
+    </label>
+  </div>
+
+  <br>
+  <button type="submit">Submit</button>
+</form>
+
 </body>
 </html>
 
