@@ -108,7 +108,7 @@
                 per week related to your meal deliveries.
               </p>
 
-              <h2>11. Opt-In Method</h2>
+              <h4>11. Opt-In Method</h4>
               <p>You may opt-in to receive SMS messages from Staja Health in the following ways:</p>
               <ul>
                 <li>Calling: <a href="tel:7088877425">708-887-7425</a></li>
