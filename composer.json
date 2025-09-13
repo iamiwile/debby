@@ -3,7 +3,8 @@
     "description": "policy form",
     "type": "project",
     "require": {
-        "symfony/http-foundation": "^6.4"
+        "symfony/http-foundation": "^6.4",
+        "gabordemooij/redbean": "^5.7"
     },
     "license": "proprietary",
     "autoload": {
