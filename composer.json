@@ -1,0 +1,21 @@
+{
+    "name": "signalbyte/debby",
+    "description": "policy form",
+    "type": "project",
+    "require": {
+        "symfony/http-foundation": "7.3"
+    },
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Signalbyte\\Debby\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Michael Williams",
+            "email": "iamiwile@msn.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
