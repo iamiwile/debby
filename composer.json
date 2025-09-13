@@ -3,7 +3,7 @@
     "description": "policy form",
     "type": "project",
     "require": {
-        "symfony/http-foundation": "7.3"
+        "symfony/http-foundation": "^6.4"
     },
     "license": "proprietary",
     "autoload": {
