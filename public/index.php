@@ -16,11 +16,13 @@ if ($request->isMethod('POST')) {
     $phone = $request->request->get('phone', '');
     $sms_consent  = $request->request->get('sms_consent', '');
 
-    $config = require '/../src/config.php';
+    $config = require '../src/config.php';
     $dbUser = $config['db_user'];
     $dbPass = $config['db_pass'];
     $dbName = $config['db_name'];
     $dbHost = $config['db_host'];
+    $dbTimeZone = $config['db_timezone'];
+    date_default_timezone_set($dbTimeZone);
     DB::setup("mysql:host={$dbHost};dbname={$dbName}", $dbUser, $dbPass);
 
     $persona = DB::dispense('persona');
@@ -29,7 +31,7 @@ if ($request->isMethod('POST')) {
     $persona->last_name = $last_name;
     $persona->email = $email;
     $persona->phone = $phone;
-    $persona->sms_consent = $sms_consent;
+    $persona->sms_consent = filter_var($sms_consent, FILTER_VALIDATE_BOOLEAN);
     $id = DB::store($persona);
 
     $nombre = "{$first_name} {$last_name}";
