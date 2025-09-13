@@ -25,14 +25,14 @@ if ($request->isMethod('POST')) {
     date_default_timezone_set($dbTimeZone);
     DB::setup("mysql:host={$dbHost};dbname={$dbName}", $dbUser, $dbPass);
 
-    $persona = DB::dispense('registers');
-    $persona->created_at = date('Y-m-d H:i:s', time());
-    $persona->first_name = $first_name;
-    $persona->last_name = $last_name;
-    $persona->email = $email;
-    $persona->phone = $phone;
-    $persona->sms_consent = filter_var($sms_consent, FILTER_VALIDATE_BOOLEAN);
-    $id = DB::store($persona);
+    $register = DB::dispense('registers');
+    $register->created_at = date('Y-m-d H:i:s', time());
+    $register->first_name = $first_name;
+    $register->last_name = $last_name;
+    $register->email = $email;
+    $register->phone = $phone;
+    $register->sms_consent = filter_var($sms_consent, FILTER_VALIDATE_BOOLEAN);
+    $id = DB::store($register);
 
     $nombre = "{$first_name} {$last_name}";
 
