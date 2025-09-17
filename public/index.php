@@ -14,6 +14,7 @@ if ($request->isMethod('POST')) {
     $last_name = $request->request->get('last_name', '');
     $email  = $request->request->get('email', '');
     $phone = $request->request->get('phone', '');
+    $message = $request->request->get('message', '');
     $sms_consent  = $request->request->get('sms_consent', '');
 
     $config = require '../src/config.php';
@@ -25,13 +26,14 @@ if ($request->isMethod('POST')) {
     date_default_timezone_set($dbTimeZone);
     DB::setup("mysql:host={$dbHost};dbname={$dbName}", $dbUser, $dbPass);
 
-    $register = DB::dispense('registers');
+    $register = DB::dispense('contact');
     $register->created_at = date('Y-m-d H:i:s', time());
     $register->first_name = $first_name;
     $register->last_name = $last_name;
     $register->email = $email;
     $register->phone = $phone;
     $register->sms_consent = filter_var($sms_consent, FILTER_VALIDATE_BOOLEAN);
+    $register->message = $message;
     $id = DB::store($register);
 
     $nombre = "{$first_name} {$last_name}";
@@ -39,10 +41,10 @@ if ($request->isMethod('POST')) {
     // Aquí puedes procesar los datos (validarlos, guardarlos, etc.)
 
     $contenido = "
-        <h1>Datos recibidos</h1>
-        <p><strong>Nombre:</strong> {$nombre}</p>
-        <p><strong>Email:</strong> {$email}</p>
-        <a href=\"/\">Volver</a>
+        <h1>Data received</h1>
+        <p>thanks for contacting us {$nombre}</p>
+        <p>Your submission has been successfully sent.</p>
+        <a href=\"/\">Go back</a>
     ";
 
     $response = new Response($contenido);
@@ -50,7 +52,7 @@ if ($request->isMethod('POST')) {
     exit;
 }
 else if ($request->isMethod('GET')){
-    $formulario = file_get_contents('../src/policy.html');
+    $formulario = file_get_contents('../src/form.html');
     $response = new Response($formulario);
     $response->send();
 }
